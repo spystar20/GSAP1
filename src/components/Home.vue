@@ -5,40 +5,50 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger)
 onMounted(()=>{
     const tl = gsap.timeline()
+    const cardSection = document.querySelector('.cards-wrapper')
+    const ScrollWidth = cardSection.scrollWidth - window.innerWidth
 tl.from(".hero",{
-  scale:1.2,duration:1.5,ease:"sine",opacity:0,
-}),gsap.from(".card",{
-    y:200,opacity:0,stagger:0.3,duration:1,ease:'power3.inOut',scrollTrigger:{
-        start:'top top',
-        end:'bottom top',
+  scale:1.2,duration:1.5,ease:"sine",opacity:0, scrollTrigger:{
+    start:'top top',end:'+=100%',trigger:'.hero',scrub:true
+  }
+})
+,gsap.from(".card",{
+    y:100,opacity:0,stagger:0.3,duration:1,ease:'power3.inOut',scrollTrigger:{
+        start:'top 80%',
+        toggleActions:'play none none reverse',
         trigger:'.card',
         markers: true,
-      
-        scrub:true,
-
+        
+ }
+}
+),
+gsap.to(cardSection,{
+    x:-ScrollWidth,opacity:1,scrollTrigger:{
+        trigger:'.horizontal-section',pin:true,scrub:true,start:'top top',end:`+=${ScrollWidth}`
     }
-}
-)
-}
+})
+},
+ 
+
 )
 
 </script>
 <template>
-    <div class="w-full min-h-screen">
+    
+    <div class="w-full h-screen">
 <img src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" class="hero object-cover w-full h-screen" alt="">
     </div>
  
-
-    <div class="p-20 grid grid-cols-3 gap-5 ">
-        <div class="card border border-gray-400/30 rounded-3xl p-12">
-            <p class=" capitalize text-lg ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam modi deleniti repellat, mollitia quod eos. Voluptate cumque saepe excepturi quasi. Maiores nesciunt tenetur error animi deserunt, repellendus suscipit cum possimus quas minima. Recusandae ratione consequuntur ab, sed sunt molestias alias? Molestias, necessitatibus id? Magni, quos.</p>
-        </div>
-         <div class="card border border-gray-400/30 rounded-3xl p-12">
-            <p class=" capitalize text-lg ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam modi deleniti repellat, mollitia quod eos. Voluptate cumque saepe excepturi quasi. Maiores nesciunt tenetur error animi deserunt, repellendus suscipit cum possimus quas minima. Recusandae ratione consequuntur ab, sed sunt molestias alias? Molestias, necessitatibus id? Magni, quos.</p>
-        </div>
-         <div class="card border border-gray-400/30 rounded-3xl p-12">
-            <p class=" capitalize text-lg ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam modi deleniti repellat, mollitia quod eos. Voluptate cumque saepe excepturi quasi. Maiores nesciunt tenetur error animi deserunt, repellendus suscipit cum possimus quas minima. Recusandae ratione consequuntur ab, sed sunt molestias alias? Molestias, necessitatibus id? Magni, quos.</p>
+<div class="horizontal-section h-screen overflow-hidden">
+    <div class="cards-wrapper flex w-max gap-5 p-20 ">
+        
+            <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">
+       
+          <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">
+         <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">
+            <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">   <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">   <img class="card w-[500px] h-[400px]  border border-gray-400/30 rounded-3xl p-3" src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" alt="">
         </div>
     </div>
+    
 </template>
 <style scoped></style>
