@@ -12,7 +12,15 @@ tl.from(".hero",{
     start:'top top',end:'+=100%',trigger:'.hero',scrub:true
   }
 })
-
+gsap.from('.title',{
+    yPercent:100,duration:1, ease:'power3.inOut',scrollTrigger:{trigger:'.title',start:'top 80%',markers :true,toggleActions:'play none none reverse'
+    }
+})
+gsap.from('.subtitle',{
+    yPercent:100,duration:1,ease:'power3.inOut',scrollTrigger:{
+        trigger:'.subtitle',start:'top 80%',markers :true,toggleActions:'play none none reverse'
+    }
+},'-=0.6')
 ,gsap.from(".card",{
     y:100,opacity:0,stagger:0.3,duration:1,ease:'power3.inOut',scrollTrigger:{
         start:'top 80%',
@@ -27,12 +35,9 @@ gsap.to(cardSection,{
     x:-ScrollWidth,opacity:1,scrollTrigger:{
         trigger:'.horizontal-section',pin:true,scrub:true,start:'top top',end:`+=${ScrollWidth}`
     }
-}),
-gsap.from('.title',{
-    yPercent:100,duration:3, ease:'power3.inOut',scrollTrigger:{trigger:'.title',start:'top 80%',markers :true
-    }
 })
-},
+
+}
  
 
 )
@@ -43,10 +48,17 @@ gsap.from('.title',{
     <div class="w-full h-screen">
 <img src="https://i1-e.pinimg.com/webp85/1200x/fb/37/42/fb3742598694224cd9eff596195b6a57.webp" class="hero object-cover w-full h-screen" alt="">
     </div>
-   <div class="overflow-hidden py-6">
+    <div class="'py-34'">
+   <div class="overflow-hidden ">
     <h2 class="title text-4xl font-semibold text-center" >
         PORTFOLIO
     </h2>
+    </div>
+    <div class="overflow-hiden">
+<h2 class="subtitle text-2xl font-semibold text-center" >
+        subtitle
+    </h2>
+    </div>
     </div>
 <div class="horizontal-section h-screen overflow-hidden">
     <div class="cards-wrapper flex w-max gap-5 p-20 ">
